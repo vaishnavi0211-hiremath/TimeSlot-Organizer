@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Timetable</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Generated Timetable</h1>
+    <table border="1">
+        <tr>
+            <th></th>
+            {% for i in range(days) %}
+                <th>Day {{ i+1 }}</th>
+            {% endfor %}
+        </tr>
+        {% for i in range(slots) %}
+        <tr>
+            <td>Period {{ i+1 }}</td>
+            {% for j in range(days) %}
+                <td>{{ timetable[i][j] }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="/">Generate Again</a>
+</body>
+</html>
